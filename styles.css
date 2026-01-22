@@ -393,16 +393,29 @@ h1 {
 .project-card.is-locked {
   position: relative;
   overflow: hidden;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.project-card.is-locked::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
+  z-index: 5;
+  border-radius: 12px;
 }
 
 .project-card-inner {
-  filter: blur(3px);
+  /* Content is no longer blurred directly to allow selection underneath the overlay */
 }
 
 .project-card-lock {
   position: absolute;
   top: 0.7rem;
   right: 0.8rem;
+  z-index: 10;
   display: inline-flex;
   align-items: center;
   justify-content: center;
